@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Atividade</title>
+</head>
+
+<body>
+    <h1>Atividade 01</h1>
+
+    <h2>ITEM 01: Cálculo de consumo do veículo (km/l)</h2>
+    <label for="distancia">Distância percorrida (km):</label>
+    <input type="number" id="distancia">
+    <br>
+    <label for="litros">Quantidade de litros gasta:</label>
+    <input type="number" id="litros">
+    <br>
+    <button onclick="calcularConsumo()">Calcular Consumo</button>
+    <p id="resultadoConsumo"></p>
+
+    <h2>ITEM 02: Criação de objeto Date e exibição da hora atual</h2>
+    <button onclick="exibirHoraAtual()">Exibir Hora Atual</button>
+    <p id="resultadoHoraAtual"></p>
+
+    <h2>ITEM 03: Cálculo da média final do estudante</h2>
+    <label for="mediaParcial">Média Parcial (MP):</label>
+    <input type="number" id="mediaParcial">
+    <br>
+    <label for="notaFinal">Avaliação Final (AF):</label>
+    <input type="number" id="notaFinal">
+    <br>
+    <button onclick="calcularMediaFinal()">Calcular Média Final</button>
+    <p id="resultadoMediaFinal"></p>
+
+    <script>
+        function calcularConsumo() {
+            const distanciaPercorrida = parseFloat(document.getElementById("distancia").value);
+            const litrosGastos = parseFloat(document.getElementById("litros").value);
+            const consumo = distanciaPercorrida / litrosGastos;
+            document.getElementById("resultadoConsumo").textContent = `O consumo do veículo é de ${consumo} km/l.`;
+        }
+
+        function exibirHoraAtual() {
+            const dataAtual = new Date();
+            const horaAtual = dataAtual.getHours();
+            const minutosAtuais = dataAtual.getMinutes();
+            document.getElementById("resultadoHoraAtual").textContent = `Hora atual: ${horaAtual}:${minutosAtuais}`;
+        }
+
+        function calcularMediaFinal() {
+            const mp = parseFloat(document.getElementById("mediaParcial").value);
+            const af = parseFloat(document.getElementById("notaFinal").value);
+            const mediaFinal = (mp + af) / 2;
+            document.getElementById("resultadoMediaFinal").textContent = `A média final do estudante é: ${mediaFinal}`;
+        }
+    </script>
+</body>
+
+</html>
