@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste de Validação de Senha</title>
+  </head>
+  <body>
+    <h2>Teste de Validação de Senha</h2>
+    <label for="senha">Digite a senha:</label>
+    <input type="password" id="senhaInput" />
+    <button onclick="testarValidacao()">Testar Validação</button>
+
+    <script>
+      function validarSenha(senha) {
+        if (senha.length < 8) {
+          return false;
+        }
+
+        if (!/[A-Z]/.test(senha)) {
+          return false;
+        }
+
+        if (!/[a-z]/.test(senha)) {
+          return false;
+        }
+
+        if (!/\d/.test(senha)) {
+          return false;
+        }
+
+        return true;
+      }
+
+      function testarValidacao() {
+        const senhaInput = document.getElementById("senhaInput");
+        const senha = senhaInput.value;
+
+        if (validarSenha(senha)) {
+          alert("Senha válida!");
+        } else {
+          alert(
+            "Senha inválida! A senha deve ter no mínimo 8 caracteres, incluindo letras maiúsculas, minúsculas e números."
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

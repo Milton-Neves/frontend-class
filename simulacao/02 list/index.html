@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Compras</title>
+  </head>
+  <body>
+    <div class="resultados" id="resultados"></div>
+
+    <script>
+      // Lista
+      const listaDeCompras = [
+        { nome: "Arroz", quantidade: 2, preco: 5.0 },
+        { nome: "Feijão", quantidade: 1, preco: 4.0 },
+        { nome: "Leite", quantidade: 3, preco: 3.5 },
+        { nome: "Pão", quantidade: 2, preco: 2.0 },
+        { nome: "Carne", quantidade: 1, preco: 10.0 },
+      ];
+
+      // Calcular o preço total da compra
+      function calcularPrecoTotal() {
+        let precoTotal = 0;
+        for (let i = 0; i < listaDeCompras.length; i++) {
+          precoTotal += listaDeCompras[i].quantidade * listaDeCompras[i].preco;
+        }
+        return precoTotal;
+      }
+
+      // Qual o roduto mais caro e o mais barato
+      function encontrarProdutosExtremos() {
+        let produtoMaisCaro = listaDeCompras[0];
+        let produtoMaisBarato = listaDeCompras[0];
+
+        for (let i = 1; i < listaDeCompras.length; i++) {
+          if (listaDeCompras[i].preco > produtoMaisCaro.preco) {
+            produtoMaisCaro = listaDeCompras[i];
+          }
+
+          if (listaDeCompras[i].preco < produtoMaisBarato.preco) {
+            produtoMaisBarato = listaDeCompras[i];
+          }
+        }
+
+        return { maisCaro: produtoMaisCaro, maisBarato: produtoMaisBarato };
+      }
+
+      const resultadosDiv = document.getElementById("resultados");
+      resultadosDiv.innerHTML += "<h3>Lista de Compras</h3><ul>";
+      for (let i = 0; i < listaDeCompras.length; i++) {
+        resultadosDiv.innerHTML += `<li>${
+          listaDeCompras[i].nome
+        } - Quantidade: ${
+          listaDeCompras[i].quantidade
+        } - Preço: ${listaDeCompras[i].preco.toFixed(2)}</li>`;
+      }
+      resultadosDiv.innerHTML += "</ul>";
+
+      const precoTotalDiv = document.createElement("p");
+      precoTotalDiv.textContent = `Preço Total da Compra: R$${calcularPrecoTotal().toFixed(
+        2
+      )}`;
+      resultadosDiv.appendChild(precoTotalDiv);
+
+      const produtosExtremos = encontrarProdutosExtremos();
+      const maisCaroDiv = document.createElement("p");
+      maisCaroDiv.textContent = `Produto mais caro: ${
+        produtosExtremos.maisCaro.nome
+      } - Preço: R$${produtosExtremos.maisCaro.preco.toFixed(2)}`;
+      resultadosDiv.appendChild(maisCaroDiv);
+
+      const maisBaratoDiv = document.createElement("p");
+      maisBaratoDiv.textContent = `Produto mais barato: ${
+        produtosExtremos.maisBarato.nome
+      } - Preço: R$${produtosExtremos.maisBarato.preco.toFixed(2)}`;
+      resultadosDiv.appendChild(maisBaratoDiv);
+    </script>
+  </body>
+</html>

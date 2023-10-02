@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Vogal</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contar Vogais</h2>
+      <label for="inputTexto">Digite um texto:</label>
+      <input type="text" id="inputTexto" />
+      <button onclick="contarEVoltar()">Contar Vogais</button>
+      <p id="resultado"></p>
+    </div>
+
+    <script>
+      function contarVogais(texto) {
+        const vogais = "aeiouAEIOU";
+        let count = 0;
+
+        for (let char of texto) {
+          if (vogais.includes(char)) {
+            count++;
+          }
+        }
+
+        return count;
+      }
+
+      function contarEVoltar() {
+        const inputTexto = document.getElementById("inputTexto");
+        const resultadoDiv = document.getElementById("resultado");
+
+        const texto = inputTexto.value;
+        const numeroVogais = contarVogais(texto);
+
+        resultadoDiv.textContent = `O número de vogais no texto é: ${numeroVogais}`;
+      }
+    </script>
+  </body>
+</html>

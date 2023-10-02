@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lançar Dado</title>
+  </head>
+  <body>
+    <h2>Lançar Dado</h2>
+    <p>Clique no botão para lançar o dado:</p>
+    <button onclick="testarLançarDado()">Lançar Dado</button>
+
+    <div class="resultados" id="resultados"></div>
+
+    <script>
+      function lançarDado(quant) {
+        let soma = 0;
+
+        for (let i = 0; i < quant; i++) {
+          const valorDado = Math.floor(Math.random() * 6) + 1;
+          soma += valorDado;
+        }
+
+        return soma;
+      }
+
+      function testarLançarDado() {
+        const resultadosDiv = document.getElementById("resultados");
+        resultadosDiv.innerHTML = "";
+
+        const quantLançamentos = 3;
+
+        for (let i = 1; i <= quantLançamentos; i++) {
+          const resultado = lançarDado(1);
+          resultadosDiv.innerHTML += `<p>Lançamento ${i}: ${resultado}</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
